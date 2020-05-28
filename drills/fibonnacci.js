@@ -28,3 +28,5 @@ function fibonacci(num, memo) {
 }
 
 console.log(fibonacci(7));
+
+module.exports = { fibonacci };
