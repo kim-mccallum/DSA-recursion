@@ -66,4 +66,4 @@ function mazePath(maze, row, col, path = []) {
   }
 }
 
-console.log(mazePath(mySmallMaze, 0, 0));
+console.log(mazePath(maze, 0, 0));
