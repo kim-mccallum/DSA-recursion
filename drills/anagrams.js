@@ -1,27 +1,23 @@
-const word = "quit";
+let anagrams = (string) => {
+  if (!string || typeof string !== "string") {
+    console.log("enter a string!");
+  } else if (string.length < 2) {
+    return string;
+  }
+  let permutationsArray = [];
 
-function anagrams(string) {
-  // store results
-  const results = {};
+  for (let i = 0; i < string.length; i++) {
+    // do something
+    let char = string[i];
+    let remainingChars =
+      string.slice(0, i) + string.slice(i + 1, string.length);
+    // console.log(char, remainingChars)
 
-  // recursive function
-  function combinations(prefix, remaining) {
-    // base case
-    if (!remaining.length) {
-      results[prefix] = "";
-      return;
-    }
-    // general case
-    for (let i = 0; i < remaining.length; i++) {
-      combinations(
-        prefix + remaining.charAt(i),
-        remaining.slice(0, i) + remaining.slice(i + 1)
-      );
+    for (let permutation of anagrams(remainingChars)) {
+      permutationsArray.push(char + permutation);
     }
   }
+  return permutationsArray;
+};
 
-  combinations("", string);
-  return Object.keys(results).join("\n");
-}
-
-console.log(anagrams(word));
+console.log(anagrams("east"));
