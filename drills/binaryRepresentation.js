@@ -19,7 +19,7 @@ function intToBinary(num) {
 
 console.log(intToBinary(25));
 
-function binaryRec(int, acc) {
+function intToBinaryRecursive(int, acc) {
   // save divisions
   acc = acc || [];
 
@@ -27,14 +27,17 @@ function binaryRec(int, acc) {
   if (acc.length === 0 && int === 0) return "0";
   if (acc.length === 0 && int === 1) return "1";
 
-  // base case - number is 0 digits
+  // base case - integer number is 0
   if (int === 0) {
-    // do something
+    // do something - put everything back together and return
     return acc.reverse().join("");
   }
   // recursive case
+  // steps: modulo division to get 1/0, then reassign integer to the rounded down number/2
+  // get the remainder (1 or 0) and add this to output
   acc.push(int % 2);
-  return binaryRec(Math.floor(int / 2), acc);
+  let nextInt = Math.floor(int / 2);
+  return intToBinaryRecursive(nextInt, acc);
 }
 
-console.log(binaryRec(25));
+console.log(intToBinaryRecursive(25));
