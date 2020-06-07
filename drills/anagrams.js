@@ -9,6 +9,11 @@ let anagrams = (string) => {
   for (let i = 0; i < string.length; i++) {
     // do something
     let char = string[i];
+
+    // handle repeating characters
+    if (string.indexOf(char) != i) {
+      continue;
+    }
     let remainingChars =
       string.slice(0, i) + string.slice(i + 1, string.length);
     // console.log(char, remainingChars)
